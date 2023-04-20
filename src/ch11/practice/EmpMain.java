@@ -6,10 +6,12 @@ public class EmpMain {
 		EmpVO aa = new EmpVO();
 		IEmpService empService = new EmpService();
 		try {
-			empService.insert(aa);	
+			empService.insert(null);	
 		} catch(RuntimeException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
+//		empService.insert(null);
 		System.out.println("메인 종료");
 	}
 }

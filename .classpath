@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/dev/my_lib.jar"/>
+	<classpathentry kind="lib" path="C:/dev/eGovFrameDev-3.10.0-64bit/eclipse/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

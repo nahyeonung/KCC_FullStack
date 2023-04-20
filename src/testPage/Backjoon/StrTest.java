@@ -10,20 +10,35 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class StrTest {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String num1 = scan.next();
-        String num2 = scan.next();
-        String result1 = "";
-        String result2 = "";
-        for(int i=2; i>=0; i--){
-            result1 += num1.charAt(i);
-            result2 += num2.charAt(i);
+        int loop = scan.nextInt();
+        scan.nextLine();
+        int result = 0;
+        for(int i=0; i<loop; i++){
+            int[] alpha = new int[26];
+            String str = scan.nextLine();
+            for(int j=0; j<str.length(); j++){
+                if(j != 0) {
+                    if(str.charAt(j-1) != str.charAt(j)){
+                        if(alpha[str.charAt(j) - 97] != 0){
+                            break;
+                        }else{
+                            alpha[str.charAt(j) - 97]++;
+                        }
+                    }else{
+                        alpha[str.charAt(j) - 97]++;
+                    }
+                }
+                else{
+                    alpha[str.charAt(j) - 97]++;
+                }
+                if(j == str.length()-1){
+                    result++;
+                }
+            }
         }
-        if(Integer.parseInt(result1) > Integer.parseInt(result2)){
-            System.out.println(Integer.parseInt(result1));
-        }else{
-            System.out.println(Integer.parseInt(result2));
-        }
+        System.out.println(result);
+
     }
 }

@@ -8,10 +8,10 @@ public class ExceptionHandlingExample {
 			try {
 				int value = Integer.parseInt(array[i]);
 				System.out.println("array[" + i + "]:" + value);
-			}catch(ArrayIndexOutOfBoundsException e){
+			}catch(ArrayIndexOutOfBoundsException e){ //하위 예외
 				System.out.println("배열 인덱스가 초과됨: " + e.getMessage());
 			}
-			catch(Exception e){
+			catch(Exception e){ //상위 예외
 				System.out.println("실행에 문제가 있습니다.");
 			}
 		}
