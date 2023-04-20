@@ -1,26 +1,36 @@
 package testPage.Backjoon;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 public class Dial {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        String[] arr = {"ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"};
-        int result = 0;
-        String str = scan.nextLine();    
-        for(int i=0; i<str.length(); i++){
-            String word = String.valueOf(str.charAt(i));
-            for(int j=0; j<arr.length; j++){
-                for(int k=0; k<arr[j].length(); k++){
-                    String word2 = String.valueOf(arr[j].charAt(k));
-                    if(word.equals(word2)){
-                        result += j + 3;
-                    }
-                }
+        int h = scan.nextInt();
+        int w = scan.nextInt();
+        int[][] arr1 = new int[h][w];
+        int[][] arr2 = new int[h][w];
+        int[][] result = new int[h][w];
+        for(int i=0; i<h; i++){
+            for(int j=0; j<w; j++){
+                arr1[i][j] = scan.nextInt();
             }
         }
-        System.out.println(result);
+        for(int i=0; i<h; i++){
+            for(int j=0; j<w; j++){
+                arr2[i][j] = scan.nextInt();
+            }
+        }
+        for(int i=0; i<h; i++){
+            for(int j=0; j<w; j++){
+                result[i][j] = arr1[i][j] + arr2[i][j];
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+        
     }
     
 }
