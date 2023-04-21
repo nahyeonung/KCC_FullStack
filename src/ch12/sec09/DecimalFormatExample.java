@@ -20,9 +20,7 @@ public class DecimalFormatExample {
 		df = new DecimalFormat("#,###.#");
 		System.out.println(df.format(num2));
 		
-		df = new DecimalFormat("#,###.# %");
-		System.out.println(df.format(num2));
-		
+		//%기호 사용
 		df = new DecimalFormat("#,###.# %");
 		System.out.println(df.format(12.56789));
 	}

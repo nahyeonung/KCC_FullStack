@@ -12,8 +12,11 @@ public class GetClassExample {
 		//Car car = new Car();
 		//Class clazz = car.getClass();
 		
+		//getPackage() : 패키지 정보 읽기
 		System.out.println("패키지: " + clazz.getPackage().getName());
+		//getSimpleName() : 패키지를 제외한 타입 이름
 		System.out.println("클래스 간단 이름: " + clazz.getSimpleName());
+		//getName() : 패키지를 포함한 전체 타입 이름
 		System.out.println("클래스 전체 이름: " + clazz.getName());
 	}
 }
