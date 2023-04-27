@@ -1,47 +1,46 @@
 package testPage;
 
-import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Test {
-	public static void main(String[] args){
-		Scanner scan = new Scanner(System.in);
-		String str = scan.nextLine().toLowerCase();
-		int max = -1;
-		HashMap<String,Integer> map = new HashMap<String,Integer>();
-		for(int i=0; i<str.length(); i++){
-			int cnt = 0;
-			for(String data : map.keySet()){
-				if(data.equals(String.valueOf(str.charAt(i)))){
-					cnt++;
-					int num = map.get(data);
-					map.put(data, num+1);
-				}
+public class Test{
+    public static void main(String[] args) throws IOException {
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        Scanner scan = new Scanner(System.in);
+        int score = scan.nextInt();
+        int dec = scan.nextInt();
+		int size = 0;
+		while(true){
+			int a = (int)Math.pow(dec, size);
+			if(a > score){
+				break;
 			}
-			if(cnt == 0){
-				map.put(String.valueOf(str.charAt(i)), 1);
+			else if(a == score){
+				size++;
+				break;
 			}
+			size++;
 		}
-		int sum = 0;
-		for(String data : map.keySet()){
-			if(max == map.get(data)){
-				sum = 1;
+		if(size == 0) size=1;
+		int[] arr = new int[size];
+		char[] result = new char[size];
+		for(int i=0; i<size; i++){
+			arr[i] = score % dec;
+			if(arr[i] >= 10){
+				result[i] = (char)(arr[i] + 55);	
+			}else {
+				result[i] = (char)(arr[i] + 48);
 			}
-			else if(map.get(data) > max){
-				max = map.get(data);
-				sum = 0;
-			}
+			score = score / dec;
 		}
-		if(sum == 0){
-			for(String data : map.keySet()){
-				if(map.get(data).equals(max)){
-					System.out.println(data);
-					break;
-				}
-			}
-		}else{
-			System.out.println("?");
+		for(int i=size-1; i>=0; i--){
+			bw.write(result[i]);
 		}
-		scan.close();
-	}
+		bw.close();
+    }
 }
