@@ -22,9 +22,9 @@ public class BoardWithFileInsertExample {
 			
 			//PreparedStatement 얻기 및 값 지정
 			PreparedStatement pstmt = conn.prepareStatement(sql, new String[] {"bno"});
-			pstmt.setString(1, "눈 오는 날");
-			pstmt.setString(2, "함박눈이 내려요");
-			pstmt.setString(3, "winter");
+			pstmt.setString(1, "test");
+			pstmt.setString(2, "test");
+			pstmt.setString(3, "test");
 			pstmt.setString(4, "snow.jpg");
 			pstmt.setBlob(5, new FileInputStream("original.png"));
 			
