@@ -2,6 +2,7 @@ package ch01.sec06;
 
 public class StringExample {
 	public static void main(String[] args) {
+		System.out.println(A.a);
 		char c1 = '가';
 		String name = "홍길동";
 		System.out.println(name);
@@ -25,5 +26,11 @@ public class StringExample {
 			"""은 JDK13 버전에 추가된 기능이지만 egov 3.10에 있는 이클립스는 지원 안함(vscode는 사용 가능)
 			프로젝트 설정에서 컴파일러 옵션을 바꿔 preview 기능을 사용할 수 있음. 
 		 */
+	}
+}
+class A{
+	public static int a;
+	static {
+		a = 1;
 	}
 }

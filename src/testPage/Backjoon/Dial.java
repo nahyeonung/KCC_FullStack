@@ -1,32 +1,30 @@
 package testPage.Backjoon;
 
-import java.util.Arrays;
 import java.util.Scanner;
-
 
 public class Dial {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int num = scan.nextInt();
-        int result = 0;
-        int i = 1;
-        while(true){
-            if(i == 1){
-                result = 1;
-                if(result >= num){
-                    break;
+        int loop = scan.nextInt();
+        int maximum = scan.nextInt();
+        int min = Integer.MAX_VALUE;
+        int[] arr = new int[loop];
+        for(int i=0; i<loop; i++){
+            arr[i] = scan.nextInt();
+        }
+        for(int i=0; i<arr.length; i++){
+            for(int j=i+1; j<arr.length; j++){
+                for(int k=j+1; k<arr.length; k++){
+                    int sum = arr[i] + arr[j] + arr[k];
+                    if(sum <= maximum){
+                        if(min >= maximum - sum){
+                            min = maximum - sum;
+                        }
+                    }
                 }
-                i++;
-            }
-            else{
-                result = result + (6*(i-1));
-                if(result >= num){
-                    break;
-                }
-                i++;    
             }
         }
-        System.out.println(i);
+        System.out.println(maximum - min);
     }
     
 }
