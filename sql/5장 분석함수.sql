@@ -137,7 +137,7 @@ select sum(quantity) from sales_log
 where week_day = 'sales_mon';
 
 select sum(sales_mon) from sales;
-
+select * from sales;
 select * from sales_log
 pivot
 ( sum(quantity)
