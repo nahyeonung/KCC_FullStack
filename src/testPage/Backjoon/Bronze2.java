@@ -1,42 +1,82 @@
 package testPage.Backjoon;
-
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Scanner;
-import java.util.Set;
+
 
 public class Bronze2 {
-    public static void main(String[] args) throws IOException {
-		//리스트는 배열과 다르게 인덱스에 값을 넣으면 덮어 씌워지지 않고 기존 값이 뒤로 밀려 남.
-		// ArrayList list = new ArrayList();
-		// list.add(0, 1);
-		// list.add(0, 2);
-		// System.out.println(list);
-		Scanner sc = new Scanner(System.in);
-		long a = sc.nextInt();
-		long b = sc.nextInt();
-		long num1 = Math.max(a,b);
-		long num2 = Math.min(a,b);
-		long result = lcd(num1, num2);
-		System.out.println(result);
+    Scanner sc = new Scanner(System.in);
 
-	}
-	public static long gcd(long num1,long num2){
-		while(num2 > 0){
-			long tmp = num2;
-			num2 = num1 % num2;
-			num1 = tmp;
-		}
-		return num1;
-	}
+		int T = sc.nextInt();
 
-	public static long lcd(long num1, long num2){
-		return num1 * num2 / gcd(num1, num2);
-	}
+		for(int test_case = 1; test_case <= T; test_case++) {
+			N = sc.nextInt();
+            int[] arr = new int[N];
+            for(int j=0; j<N; j++){
+                int num = sc.nextInt();
+                arr[j] = num;
+            }
+            int max = 0;
+            
+            for(int j=0; j<arr.length; j++){
+                int sum = 0;
+                for(int k=0; k<arr.length; k++){
+                    if(k != j){
+                        sum = sum + arr[k];
+                    }
+                }
+                if(sum > 0){
+                    for(int k=0; k<arr.length; k++){
+                        int min_val = Integer.MAX_VALUE;
+                        max = max + arr[k];
+                        for(int l=0; l<arr.length; l++){
+                            if(k != l){
+                                max = max + arr[l];
+                                if(arr[l] < 0){
+                                    if(arr[l] < min_val){
+                                        min_val = arr[l];
+                                    }        
+                                }
+                            }
+                        }
+                        if(min_val != Integer.MAX_VALUE){
+                            max = max - min_val;
+                        }
+                    }
+                }
+                else if(sum < 0){
+                    int max_val = Integer.MIN_VALUE;
+                    for(int k=0; k<arr.length; k++){
+                        max = max + arr[k];
+                        for(int l=0; l<arr.length; l++){
+                            max = max + arr[l];
+                            if(k != l){
+                                if(arr[l] > 0){
+                                    if(arr[l] > max_val){
+                                        max_val = arr[l];
+                                    }
+                                }
+                            }
+                        }
+                        if(max_val != Integer.MAX_VALUE){
+                            max = max - max_val;
+                        }
+                    }
+                }
+                else if(sum == 0){
+                    
+                }
+            }
+            
+            
+            System.out.println(Math.abs(max) % 1000000007);
 }
